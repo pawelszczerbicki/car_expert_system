@@ -7,7 +7,7 @@ knowledge database <br/>
 <c:forEach items="${cars}" var="car">
     <br/>
     ***************CAR************************** <br/>
-    ${car.make}, ${car.model},${car.fuelConsumption}, ${car.maxSpeed},${car.acceleraton},${car.horsePower},${car.moment},${car.capacity},
+    ${car.make}, ${car.model},${car.fuelConsumption}, ${car.maxSpeed},${car.acceleration},${car.horsePower},${car.moment},${car.capacity},
     <c:forEach items="${car.features}" var="feature">
         ${feature},
     </c:forEach>

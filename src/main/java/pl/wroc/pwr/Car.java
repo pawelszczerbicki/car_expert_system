@@ -15,20 +15,20 @@ public class Car {
     private Double price;
     private Double fuelConsumption;
     private Integer maxSpeed;
-    private Double acceleraton;
+    private Double acceleration;
     private Double horsePower;
     private Double moment;
     private Double capacity;
     private Image photo;
     private List<Feature> features = new ArrayList<>();
 
-    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleraton, Double horsePower, Double moment, Double capacity, Feature... features) {
+    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Feature... features) {
         this.make = make;
         this.model = model;
         this.price = price;
         this.fuelConsumption = fuelConsumption;
         this.maxSpeed = maxSpeed;
-        this.acceleraton = acceleraton;
+        this.acceleration = acceleration;
         this.horsePower = horsePower;
         this.moment = moment;
         this.capacity = capacity;
@@ -55,8 +55,8 @@ public class Car {
         return maxSpeed;
     }
 
-    public Double getAcceleraton() {
-        return acceleraton;
+    public Double getAcceleration() {
+        return acceleration;
     }
 
     public Double getHorsePower() {
