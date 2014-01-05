@@ -11,7 +11,7 @@
     <context:property-placeholder location="WEB-INF/properties/system.properties"/>
     <annotation-driven />
     <context:annotation-config/>
-    <resources location="/resources/" mapping="/resources/**"/>
+    <resources location="/res/" mapping="/resources/**"/>
     <default-servlet-handler/>
     <context:component-scan base-package="pl.wroc.pwr" />
 

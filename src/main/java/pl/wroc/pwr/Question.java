@@ -9,10 +9,12 @@ import java.util.List;
  */
 public class Question {
 
+    private Type type;
     private String question;
     private List<String> answers = new ArrayList<>();
 
-    public Question(String question, String answers) {
+    public Question(Type type, String question, String... answers) {
+        this.type = type;
         this.question = question;
         this.answers.addAll(Arrays.asList(answers));
     }

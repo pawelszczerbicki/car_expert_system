@@ -1,6 +1,11 @@
 package pl.wroc.pwr;
 
+import org.springframework.core.io.ClassPathResource;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +24,11 @@ public class Car {
     private Double horsePower;
     private Double moment;
     private Double capacity;
-    private Image photo;
+    private Integer doors;
+    private BufferedImage photo;
     private List<Feature> features = new ArrayList<>();
 
-    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Feature... features) {
+    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Integer doors, Feature... features){
         this.make = make;
         this.model = model;
         this.price = price;
@@ -32,7 +38,14 @@ public class Car {
         this.horsePower = horsePower;
         this.moment = moment;
         this.capacity = capacity;
+        this.doors = doors;
         this.features.addAll(Arrays.asList(features));
+        try {
+            photo = ImageIO.read(new ClassPathResource("/img/czarna-rx-mazda-8.jpeg").getFile());
+        } catch (IOException e) {
+            System.out.println("path: "+new ClassPathResource("/img/czarna-rx-mazda-8.jpeg").getPath());
+            e.printStackTrace();
+        }
     }
 
     public String getMake() {
@@ -75,7 +88,12 @@ public class Car {
         return photo;
     }
 
+    public Integer getDoors() {
+        return doors;
+    }
+
     public List<Feature> getFeatures() {
         return features;
     }
+
 }

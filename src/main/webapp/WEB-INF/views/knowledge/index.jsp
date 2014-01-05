@@ -11,4 +11,5 @@ knowledge database <br/>
     <c:forEach items="${car.features}" var="feature">
         ${feature},
     </c:forEach>
+    <img src="${car.photo}"/>
 </c:forEach>
