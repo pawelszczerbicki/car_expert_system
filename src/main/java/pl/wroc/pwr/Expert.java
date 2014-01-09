@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Pawel on 04.01.14.
  */
@@ -14,4 +16,8 @@ public class Expert {
 
     @Autowired
     private Knowledge knowledge;
+
+    public void resolve(List<Answer> answers) {
+
+    }
 }

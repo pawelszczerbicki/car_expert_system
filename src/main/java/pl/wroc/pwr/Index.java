@@ -39,7 +39,14 @@ public class Index {
     }
 
     @RequestMapping(value="answers", method = RequestMethod.POST)
-    public JsonResponse answer(List<Answer> answers){
-        return SuccessResponse.create("ok");
+    public String answer(List<Answer> answers){
+        expert.resolve(answers);
+        return "result";
+    }
+
+    @RequestMapping(value="answers-test", method = RequestMethod.POST)
+    public String answers(Model model){
+        model.addAttribute("cars", knowledge.getCars());
+        return "result";
     }
 }
