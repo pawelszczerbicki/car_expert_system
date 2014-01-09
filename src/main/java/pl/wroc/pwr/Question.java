@@ -9,14 +9,24 @@ import java.util.List;
  */
 public class Question {
 
+    private FeatureType id;
     private Type type;
     private String question;
     private List<String> answers = new ArrayList<>();
 
-    public Question(Type type, String question, String... answers) {
+    public Question(FeatureType id, Type type, String question, String... answers) {
+        this.id = id;
         this.type = type;
         this.question = question;
         this.answers.addAll(Arrays.asList(answers));
+    }
+
+    public FeatureType getId() {
+        return id;
+    }
+
+    public void setId(FeatureType id) {
+        this.id = id;
     }
 
     public Type getType() {

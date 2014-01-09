@@ -7,18 +7,18 @@ public abstract class JsonResponse<T> {
 
     private String status;
 
-    private T data;
+    private T questions;
 
-    protected JsonResponse(String status, T data) {
+    protected JsonResponse(String status, T questions) {
         this.status = status;
-        this.data = data;
+        this.questions = questions;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public T getData() {
-        return data;
+    public T getQuestions() {
+        return questions;
     }
 }
