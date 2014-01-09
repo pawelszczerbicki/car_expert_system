@@ -1,4 +1,4 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -24,10 +24,17 @@
 
     <h1 class="text-center">Car purchase assistance</h1>
     <div class="jumbotron">
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </p>
-        <p class="pull-left text-left"><a class="btn btn-primary" href="#" role="button">Previous question</a></p>
-        <p class="text-right"><a class="btn btn-primary" href="#" role="button">Next question</a></p>
+        <div id="intro" class="lead">
+            <p>Take participation in our survey to let know what car is most appropriate one for you.</p>
+            <br>
+            <p class="text-center"><a id="btn-start-survey" class="btn btn-lg btn-primary" href="#" role="button">Start survey</a></p>
+        </div>
+        <div id="question" style="display: none;">
+            <h4 id="question-title"></h4>
+            <div id="question-body"></div>
+            <p id="btn-next-question" class="text-right"><a class="btn btn-primary" href="#" role="button">Next question</a></p>
+        </div>
+        <%--<p class="pull-left text-left"><a class="btn btn-primary" href="#" role="button">Previous question</a></p>--%>
     </div>
 
 

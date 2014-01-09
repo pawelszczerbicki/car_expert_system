@@ -13,11 +13,16 @@ body {
 }
 
 .container-narrow {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
-.lead {
+.jumbotron {
   min-height: 200px;
+  font-size: 14px;
+}
+
+label {
+  font-weight: 400;
 }
 
 /* Custom page header */

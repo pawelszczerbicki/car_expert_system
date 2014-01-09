@@ -28,7 +28,7 @@ public class Knowledge {
         ));
         questions.put(CAR_TYPE, new Question(CAR_TYPE, Type.MULTIANSWER, "What kind of car do you want?", SEDAN.toString(), CABRIO.toString(), COMBI.toString(), COUPE.toString(), VAN.toString(), LIMOUSYNE.toString(), HATCHBACK.toString(), SUV.toString()));
         questions.put(PETROL_TYPE, new Question(PETROL_TYPE, Type.MULTIANSWER, "what petrol?", GAS.toString(), PETROL.toString(), DIESEL.toString()));
-        questions.put(ENGINE_CAPACITY, new Question(ENGINE_CAPACITY,Type.OPEN, "What capacity"));
+//        questions.put(ENGINE_CAPACITY, new Question(ENGINE_CAPACITY,Type.OPEN, "What capacity"));
 
     }
 
