@@ -19,7 +19,27 @@ public class Question {
         this.answers.addAll(Arrays.asList(answers));
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public String getQuestion() {
         return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<String> answers) {
+        this.answers = answers;
     }
 }
