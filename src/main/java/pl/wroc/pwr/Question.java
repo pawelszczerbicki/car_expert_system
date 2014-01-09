@@ -1,5 +1,7 @@
 package pl.wroc.pwr;
 
+import pl.wroc.pwr.car.FeatureType;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

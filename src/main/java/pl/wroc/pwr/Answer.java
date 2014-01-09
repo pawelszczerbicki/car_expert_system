@@ -1,5 +1,7 @@
 package pl.wroc.pwr;
 
+import pl.wroc.pwr.car.FeatureType;
+
 /**
  * Created by Pawel on 07.01.14.
  */

@@ -1,4 +1,4 @@
-package pl.wroc.pwr;
+package pl.wroc.pwr.car;
 
 /**
  * Created by Pawel on 04.01.14.

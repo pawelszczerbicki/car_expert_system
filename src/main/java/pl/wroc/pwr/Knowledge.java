@@ -1,12 +1,14 @@
 package pl.wroc.pwr;
 
 import org.springframework.stereotype.Component;
+import pl.wroc.pwr.car.Car;
+import pl.wroc.pwr.car.FeatureType;
 
 import java.util.*;
 
-import static pl.wroc.pwr.Feature.*;
-import static pl.wroc.pwr.FeatureType.*;
-import static pl.wroc.pwr.FeatureType.ENGINE_CAPACITY;
+import static pl.wroc.pwr.car.Feature.*;
+import static pl.wroc.pwr.car.FeatureType.*;
+import static pl.wroc.pwr.car.FeatureType.ENGINE_CAPACITY;
 
 /**
  * Created by Pawel on 04.01.14.
@@ -14,6 +16,7 @@ import static pl.wroc.pwr.FeatureType.ENGINE_CAPACITY;
 @Component
 public class Knowledge {
 
+    private static final String PHOTO_SUFFIX = "/resources/img/";
     private static List<Car> cars = new ArrayList<>();
     private static Map<FeatureType, Question> questions = new LinkedHashMap<>();
 
@@ -35,5 +38,9 @@ public class Knowledge {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Integer questionAmount() {
+        return questions.size();
     }
 }
