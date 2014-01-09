@@ -32,7 +32,7 @@ public class Index {
         return "knowledge";
     }
 
-    @RequestMapping("questions")
+    @RequestMapping(value = "questions", produces = "application/json")
     @ResponseBody
     public JsonResponse question(){
         return SuccessResponse.create(knowledge.getQuestions());

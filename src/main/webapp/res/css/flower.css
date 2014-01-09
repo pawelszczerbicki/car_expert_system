@@ -12,6 +12,10 @@ body {
   padding-right: 15px;
 }
 
+.container-narrow {
+    margin-top: 50px;
+}
+
 .lead {
   min-height: 200px;
 }
@@ -37,7 +41,7 @@ body {
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
+  .container-narrow {
     max-width: 730px;
   }
 }
