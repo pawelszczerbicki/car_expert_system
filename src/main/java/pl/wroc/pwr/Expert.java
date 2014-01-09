@@ -17,7 +17,7 @@ public class Expert {
     @Autowired
     private Knowledge knowledge;
 
-    public void resolve(List<Answer> answers) {
-
+    public List<Car> resolve(List<Answer> answers) {
+        return null;
     }
 }

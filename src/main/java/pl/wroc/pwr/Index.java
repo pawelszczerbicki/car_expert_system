@@ -22,30 +22,30 @@ public class Index {
     private Knowledge knowledge;
 
     @RequestMapping
-	public String index() {
-		return "index";
-	}
+    public String index() {
+        return "index";
+    }
 
     @RequestMapping("knowledge")
-    public String knowledge(Model model){
+    public String knowledge(Model model) {
         model.addAttribute("cars", knowledge.getCars());
         return "knowledge";
     }
 
-    @RequestMapping(value = "questions", produces = "application/json")
+    @RequestMapping(value = "questions")
     @ResponseBody
-    public JsonResponse question(){
-        return SuccessResponse.create(knowledge.getQuestions());
+    public JsonResponse question() {
+        return SuccessResponse.create(knowledge.getQuestions().values());
     }
 
-    @RequestMapping(value="answers", method = RequestMethod.POST)
-    public String answer(List<Answer> answers){
-        expert.resolve(answers);
+    @RequestMapping(value = "answers", method = RequestMethod.POST)
+    public String answer(List<Answer> answers, Model model) {
+        model.addAttribute("cars", expert.resolve(answers));
         return "result";
     }
 
-    @RequestMapping(value="answers-test", method = RequestMethod.POST)
-    public String answers(Model model){
+    @RequestMapping(value = "answers-test", method = RequestMethod.POST)
+    public String answers(Model model) {
         model.addAttribute("cars", knowledge.getCars());
         return "result";
     }
