@@ -6,8 +6,5 @@
         <put-attribute name="body" value="/WEB-INF/views/knowledge/index.jsp" />
     </definition>
 
-    <definition extends="index" name="result">
-        <put-attribute name="body" value="/WEB-INF/views/knowledge/result.jsp" />
-    </definition>
 
 </tiles-definitions>
