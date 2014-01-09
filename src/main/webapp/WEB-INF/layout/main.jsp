@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HDR</title>
     <tiles:insertAttribute name="header"/>
 </head>
 <body>
