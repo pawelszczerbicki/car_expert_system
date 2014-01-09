@@ -40,6 +40,6 @@ public class Index {
 
     @RequestMapping(value="answers", method = RequestMethod.POST)
     public JsonResponse answer(List<Answer> answers){
-        return "";
+        return SuccessResponse.create("ok");
     }
 }
