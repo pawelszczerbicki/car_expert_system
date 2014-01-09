@@ -3,17 +3,16 @@ package pl.wroc.pwr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.wroc.pwr.response.JsonResponse;
 import pl.wroc.pwr.response.SuccessResponse;
 
-import java.util.List;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/")
 public class Index {
+
 
     @Autowired
     private Expert expert;
@@ -40,8 +39,9 @@ public class Index {
 
     @RequestMapping(value = "answers", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse answer(List<Answer> answers) {
-        return SuccessResponse.create(expert.resolve(answers));
+    public JsonResponse answer(@RequestBody Answer[] answers) {
+        System.out.println(answers);
+        return SuccessResponse.create(expert.resolve(Arrays.asList(answers)));
     }
 
     @RequestMapping(value = "answers-test", method = RequestMethod.GET)

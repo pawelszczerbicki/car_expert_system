@@ -8,7 +8,7 @@ import pl.wroc.pwr.car.FeatureType;
 public class Answer {
 
     private FeatureType featureType;
-    private Object answer;
+    private String answer;
 
     public FeatureType getFeatureType() {
         return featureType;
@@ -18,11 +18,19 @@ public class Answer {
         this.featureType = featureType;
     }
 
-    public Object getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Object answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "featureType=" + featureType +
+                ", answer='" + answer + '\'' +
+                '}';
     }
 }

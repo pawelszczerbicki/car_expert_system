@@ -33,6 +33,7 @@ public class Expert {
         for(Entry<Car, Integer> e : rank.entrySet())
             carRanks.add(new CarRank(e.getKey(), ((double)e.getValue())/knowledge.questionAmount()));
         Collections.sort(carRanks, new CarRankComparator());
+        System.out.println("Q amount :" + knowledge.questionAmount());
         return carRanks;
     }
 
@@ -80,6 +81,7 @@ public class Expert {
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
                 break;
         }
+        System.out.println("rank:" + rank);
         return rank;
     }
 

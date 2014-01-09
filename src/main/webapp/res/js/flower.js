@@ -51,9 +51,14 @@ jQuery(function($){
                 showNextQuestion();
             }
             else {
-                $.post('answers', JSON.stringify(answers), function(result){
-                    console.log(result);
-                });
+                $.ajax({
+                    url: "answers",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(answers), //Stringified Json Object
+                    success: function (resposeJsonObject) {
+                        console.log(resposeJsonObject)
+                    }});
             }
         });
     }
