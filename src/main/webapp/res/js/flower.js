@@ -26,7 +26,6 @@ jQuery(function($){
 
                     questions = result.questions;
                     showNextQuestion();
-                    console.log(questions)
 
                 }
             });
@@ -56,10 +55,44 @@ jQuery(function($){
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(answers), //Stringified Json Object
-                    success: function (resposeJsonObject) {
-                        console.log(resposeJsonObject)
+                    success: function (responseJsonObject) {
+                        showResults(responseJsonObject.questions);
                     }});
             }
+        });
+    }
+
+    function showResults(result){
+
+        $(questionTitleContainer).text('Best choices for you:');
+        $(questionBodyContainer).empty();
+
+
+        result.map(function(item){
+            console.log(item.car)
+
+            $(questionBodyContainer).append(
+                $('<h3>', { text: item.car.model }),
+                $('<div>', { class: 'row'}).append(
+                    $('<div>', { class: 'col-md-4'}).append(
+                        $('<a>', { class: 'thumbnail'}).append(
+                            $('<img>', { src: item.car.photo })
+                        )
+                    ),
+                    $('<div>', { class: 'col-md-4'}).append(
+                        $('<p>', { text: 'In plus'})
+                    ),
+                    $('<div>', { class: 'col-md-4'}).append(
+                        $('<p>', { text: 'In minus'})
+                    )
+                ),
+                $('<div>', { class: 'progress' }).append(
+                    $('<div>', { class: 'progress-bar', role: 'progressbar'}).animate({width: item.rank * 100 + '%'}).append(
+                        $('<span>', { text: item.rank * 100 + '%'})
+                    )
+                )
+            );
+
         });
     }
 

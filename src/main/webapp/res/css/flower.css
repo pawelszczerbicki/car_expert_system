@@ -44,6 +44,16 @@ label {
   border-top: 1px solid #e5e5e5;
 }
 
+.progress {
+    position: relative;
+}
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container-narrow {
