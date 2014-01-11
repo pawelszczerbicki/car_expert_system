@@ -3,6 +3,7 @@ jQuery(function($){
     (function main(){
         onStartSurveyClick('#btn-start-survey', '#intro', '#question', 'questions');
         onNextQuestionClick('#btn-next-question');
+        onNoAnswerClick('#btn-no-answer');
     })();
 
 
@@ -21,15 +22,18 @@ jQuery(function($){
             $(question).show();
 
             $.get(ajaxUrl, function(result){
-
                 if(result && result.questions && result.status === 'success'){
-
                     questions = result.questions;
                     showNextQuestion();
-
                 }
             });
 
+        });
+    }
+
+    function onNoAnswerClick(button){
+        $(button).click(function(){
+            submitOrShow();
         });
     }
 
@@ -39,12 +43,24 @@ jQuery(function($){
             var previousQuestion = questions[currentQuestionIndex-1].id;
 
             if(previousQuestion){
-                answers.push({
-                    featureType : previousQuestion,
-                    answer : $(questionBodyContainer).find('input:checked').val()
-                });
+
+                if($(questionBodyContainer).find('input:checked').val()){
+                    answers.push({
+                        featureType : previousQuestion,
+                        answer : $(questionBodyContainer).find('input:checked').val()
+                    });
+                }
+
             }
 
+            submitOrShow();
+
+        });
+    }
+
+    function submitOrShow(){
+        if($(questionBodyContainer).find('input:checked').val()){
+            $('#alert-msg').hide();
 
             if(questions.length !== currentQuestionIndex){
                 showNextQuestion();
@@ -59,7 +75,11 @@ jQuery(function($){
                         showResults(responseJsonObject.questions);
                     }});
             }
-        });
+
+        }
+        else {
+            $('#alert-msg').show();
+        }
     }
 
     function showResults(result){
@@ -69,7 +89,8 @@ jQuery(function($){
 
 
         result.map(function(item){
-            console.log(item.car)
+
+            console.log(item.car);
 
             $(questionBodyContainer).append(
                 $('<h3>', { text: item.car.model }),

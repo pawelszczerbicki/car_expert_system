@@ -30,11 +30,14 @@
             <p class="text-center"><a id="btn-start-survey" class="btn btn-lg btn-primary" href="#" role="button">Start survey</a></p>
         </div>
         <div id="question" style="display: none;">
+            <div id="alert-msg" class="alert alert-danger" style="display: none;">
+                At least one checkbox has to be selected.
+            </div>
             <h4 id="question-title"></h4>
             <div id="question-body"></div>
+            <p id="btn-no-answer" class="text-left pull-left"><a class="btn btn-default" href="#" role="button">No answer</a></p>
             <p id="btn-next-question" class="text-right"><a class="btn btn-primary" href="#" role="button">Next question</a></p>
         </div>
-        <%--<p class="pull-left text-left"><a class="btn btn-primary" href="#" role="button">Previous question</a></p>--%>
     </div>
 
 
