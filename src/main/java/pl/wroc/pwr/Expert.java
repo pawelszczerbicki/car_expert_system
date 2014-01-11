@@ -44,7 +44,7 @@ public class Expert {
 
     private Integer updateRank(Answer a, Car car) {
         Integer rank = 0;
-        String answer = (String) a.getAnswer();
+        String answer = a.getAnswer();
         switch (a.getFeatureType()) {
             case ACCELERATION:
                 if (car.getAcceleration() <= Integer.parseInt(answer)) rank++;
