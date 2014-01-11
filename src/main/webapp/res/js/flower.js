@@ -33,7 +33,7 @@ jQuery(function($){
 
     function onNoAnswerClick(button){
         $(button).click(function(){
-            submitOrShow();
+            submitOrShow('no-answer');
         });
     }
 
@@ -58,7 +58,7 @@ jQuery(function($){
         });
     }
 
-    function submitOrShow(){
+    function submitOrShow(action){
         if($(questionBodyContainer).find('input:checked').val()){
             $('#alert-msg').hide();
 
@@ -76,6 +76,10 @@ jQuery(function($){
                     }});
             }
 
+        }
+        else if(action === 'no-answer') {
+            $('#alert-msg').hide();
+            showNextQuestion();
         }
         else {
             $('#alert-msg').show();
