@@ -40,7 +40,6 @@ public class Index {
     @RequestMapping(value = "answers", method = RequestMethod.POST)
     @ResponseBody
     public JsonResponse answer(@RequestBody Answer[] answers) {
-        System.out.println(answers);
         return SuccessResponse.create(expert.resolve(Arrays.asList(answers)));
     }
 

@@ -4,7 +4,7 @@ package pl.wroc.pwr.car;
  * Created by Pawel on 04.01.14.
  */
 public enum Feature {
-    SEDAN, LIMOUSYNE, COMBI, HATCHBACK, VAN, COUPE, CABRIO, SUV,
+    SEDAN, LIMOUSYNE, COMBI, HATCHBACK, VAN, COUPE, CABRIO, SUV,LIFTBACK, ROADSTER,
     DIESEL, PETROL, GAS,
     TURBO, RAIL_4, RAIL_FRONT, RAIL_REAR,
 
