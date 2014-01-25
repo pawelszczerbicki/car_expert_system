@@ -87,6 +87,10 @@ public class Car {
         return features;
     }
 
+    public Integer getTrunk() {
+        return trunk;
+    }
+
     public boolean hasFeature(Feature f) {
         return features.contains(f);
     }

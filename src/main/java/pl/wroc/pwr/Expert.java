@@ -20,6 +20,8 @@ public class Expert {
     @Autowired
     private Knowledge knowledge;
 
+    private static final String DELIMITER = "-";
+
     public List<CarRank> resolve(List<Answer> answers) {
         Map<Car, Integer> rank = getRankMap();
         for (Answer a : answers)
@@ -29,9 +31,9 @@ public class Expert {
     }
 
     private List<CarRank> getCarRank(Map<Car, Integer> rank) {
-         List<CarRank> carRanks = new ArrayList<>();
-        for(Entry<Car, Integer> e : rank.entrySet())
-            carRanks.add(new CarRank(e.getKey(), ((double)e.getValue())/knowledge.questionAmount()));
+        List<CarRank> carRanks = new ArrayList<>();
+        for (Entry<Car, Integer> e : rank.entrySet())
+            carRanks.add(new CarRank(e.getKey(), ((double) e.getValue()) / knowledge.questionAmount()));
         Collections.sort(carRanks, new CarRankComparator());
         return carRanks;
     }
@@ -45,9 +47,13 @@ public class Expert {
     private Integer updateRank(Answer a, Car car) {
         Integer rank = 0;
         String answer = a.getAnswer();
+        double start;
+        double stop;
         switch (a.getFeatureType()) {
             case ACCELERATION:
-                if (car.getAcceleration() <= Integer.parseInt(answer)) rank++;
+                start = Integer.parseInt(answer.split(DELIMITER)[0]);
+                stop = Integer.parseInt(answer.split(DELIMITER)[1]);
+                if (car.getAcceleration() >= start && car.getAcceleration() <= stop) rank++;
                 break;
             case CAR_TYPE:
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
@@ -56,19 +62,39 @@ public class Expert {
                 if (car.getDoors().equals(Integer.parseInt(answer))) rank++;
                 break;
             case ENGINE_CAPACITY:
-                //if (car.getCapacity().equals(Double.parseDouble(answer))) rank++;
+                start = Integer.parseInt(answer.split(DELIMITER)[0]);
+                stop = Integer.parseInt(answer.split(DELIMITER)[1]);
+                if (car.getCapacity() >= start && car.getCapacity() <= stop) rank++;
                 break;
             case FUEL_CONSUMPTION:
-                if (car.getFuelConsumption() <= Double.parseDouble(answer)) rank++;
+                start = Double.parseDouble(answer.split(DELIMITER)[0]);
+                stop = Double.parseDouble(answer.split(DELIMITER)[1]);
+                if (car.getFuelConsumption() >= start && car.getFuelConsumption() <= stop) rank++;
                 break;
             case HORSE_POWER:
-                if (car.getHorsePower() >= Double.parseDouble(answer)) rank++;
+                start = Double.parseDouble(answer.split(DELIMITER)[0]);
+                stop = Double.parseDouble(answer.split(DELIMITER)[1]);
+                if (car.getHorsePower() >= start && car.getHorsePower() <= stop) rank++;
                 break;
             case MAX_SPEED:
-                if (car.getMaxSpeed() >= Integer.parseInt(answer)) rank++;
+                start = Double.parseDouble(answer.split(DELIMITER)[0]);
+                stop = Double.parseDouble(answer.split(DELIMITER)[1]);
+                if (car.getMaxSpeed() >= start && car.getMaxSpeed() <= stop) rank++;
                 break;
             case MOMENT:
-                if (car.getMoment() >= Double.parseDouble(answer)) rank++;
+                start = Double.parseDouble(answer.split(DELIMITER)[0]);
+                stop = Double.parseDouble(answer.split(DELIMITER)[1]);
+                if (car.getMoment() >= start && car.getMoment() <= stop) rank++;
+                break;
+            case PRICE:
+                start = Double.parseDouble(answer.split(DELIMITER)[0]);
+                stop = Double.parseDouble(answer.split(DELIMITER)[1]);
+                if (car.getPrice() >= start && car.getPrice() <= stop) rank++;
+                break;
+            case TRUNK:
+                start = Integer.parseInt(answer.split(DELIMITER)[0]);
+                stop = Integer.parseInt(answer.split(DELIMITER)[1]);
+                if (car.getTrunk() >= start && car.getTrunk() <= stop) rank++;
                 break;
             case FUEL:
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
@@ -77,6 +103,12 @@ public class Expert {
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
                 break;
             case TURBO:
+                if (car.hasFeature(Feature.valueOf(answer))) rank++;
+                break;
+            case GEAR_BOX:
+                if (car.hasFeature(Feature.valueOf(answer))) rank++;
+                break;
+            case CAR_PURPOSE:
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
                 break;
         }

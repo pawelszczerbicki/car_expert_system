@@ -32,7 +32,7 @@ public class Knowledge {
                 new Car("Volkswagen", "Passat", 95000d, 5.8, 215, 9.0, 170d, 230d, 2.0, 5, 565, getPhoto("passat.jpg"), SEDAN, DIESEL),
                 new Car("Mazda", "6", 105000d, 6.2, 216, 9.1, 165d, 210d, 2.0, 5, 500, getPhoto("mazda.jpeg"), SEDAN, PETROL, RAIL_FRONT),
                 new Car("Ford", "Mondeo", 86000d, 5.3, 220, 8.9, 163d, 340d, 2.0, 5, 460, getPhoto("mondeo.jpg"), SEDAN, DIESEL, RAIL_FRONT),
-                new Car("BMW", "3", 128000d, 5.8, 235, 7.5, 184d, 380d, 2.0, 5, 480, getPhoto("bmw3.jpg"), SEDAN, DIESEL, RAIL_REAR),
+                new Car("BMW", "3 Series", 128000d, 5.8, 235, 7.5, 184d, 380d, 2.0, 5, 480, getPhoto("bmw3.jpg"), SEDAN, DIESEL, RAIL_REAR),
                 new Car("Audi", "A4", 120000d, 5.8, 226, 8.7, 170d, 230d, 2.0, 5, 440, getPhoto("audia4.jpg"), SEDAN, DIESEL, RAIL_FRONT),
                 new Car("Toyota", "RAV4", 123000d, 6.8, 190, 9.6, 150d, 340d, 2.2, 5, 469, getPhoto("toyotarav4.jpg"), SUV, DIESEL, RAIL_4),
                 new Car("Nissan", "Qashqai", 75000d, 6.5, 199, 9.0, 150d, 240d, 1.6, 5, 410, getPhoto("nissan_qashqai.jpg"), SUV, PETROL, RAIL_FRONT),
@@ -44,7 +44,8 @@ public class Knowledge {
         questions.put(FeatureType.PRICE, new Question(FeatureType.PRICE, Type.MULTIANSWER, "What price ? [PLN]", "30000-60000", "61000-90000", "91000-120000", "121000-150000", "151000-500000"));
         questions.put(FUEL, new Question(FUEL, Type.MULTIANSWER, "What fuel type?", GAS.toString(), PETROL.toString(), DIESEL.toString()));
         questions.put(CAR_TYPE, new Question(CAR_TYPE, Type.MULTIANSWER, "What kind of car do you want?", SEDAN.toString(), CABRIO.toString(), COMBI.toString(), COUPE.toString(), VAN.toString(), LIMOUSINE.toString(), HATCHBACK.toString(), SUV.toString(), LIFTBACK.toString(), ROADSTER.toString()));
-        questions.put(TRUNK, new Question(TRUNK, Type.MULTIANSWER, "What trunk capacity do zou want? [L]", "120-250", "250-350", "350-400", "400-500",  "500-700" ));
+        questions.put(TRUNK, new Question(TRUNK, Type.MULTIANSWER, "What trunk capacity do zou want? [L]", "120-250", "250-350", "350-400", "400-500", "500-700"));
+        questions.put(DOORS, new Question(DOORS, Type.MULTIANSWER, "How many doors do you want", "2", "5"));
         questions.put(GEAR_BOX, new Question(GEAR_BOX, Type.MULTIANSWER, "What type of gearbox do you want", MANUAL.toString(), AUTOMAT.toString()));
         questions.put(RAIL_TYPE, new Question(RAIL_TYPE, Type.MULTIANSWER, "What kind of rail?", RAIL_4.toString(), RAIL_FRONT.toString(), RAIL_REAR.toString()));
         questions.put(FeatureType.ENGINE_CAPACITY, new Question(FeatureType.ENGINE_CAPACITY, Type.MULTIANSWER, "What is engine size", "1.0-1.5", "1.6-1.9", "2.0-2.5", "2.5-5.0"));
