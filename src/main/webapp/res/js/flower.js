@@ -1,6 +1,6 @@
-jQuery(function($){
+jQuery(function ($) {
 
-    (function main(){
+    (function main() {
         onStartSurveyClick('#btn-start-survey', '#intro', '#question', 'questions');
         onNextQuestionClick('#btn-next-question');
         onNoAnswerClick('#btn-no-answer');
@@ -16,14 +16,14 @@ jQuery(function($){
         btnNext = '#btn-next-question',
         totalProgress = '#total-progress';
 
-    function onStartSurveyClick(button, intro, question, ajaxUrl){
-        $(button).click(function(){
+    function onStartSurveyClick(button, intro, question, ajaxUrl) {
+        $(button).click(function () {
 
             $(intro).hide();
             $(question).show();
 
-            $.get(ajaxUrl, function(result){
-                if(result && result.questions && result.status === 'success'){
+            $.get(ajaxUrl, function (result) {
+                if (result && result.questions && result.status === 'success') {
                     questions = result.questions;
                     showNextQuestion();
                 }
@@ -32,23 +32,23 @@ jQuery(function($){
         });
     }
 
-    function onNoAnswerClick(button){
-        $(button).click(function(){
+    function onNoAnswerClick(button) {
+        $(button).click(function () {
             submitOrShow('no-answer');
         });
     }
 
-    function onNextQuestionClick(button){
-        $(button).click(function(){
+    function onNextQuestionClick(button) {
+        $(button).click(function () {
 
-            var previousQuestion = questions[currentQuestionIndex-1].id;
+            var previousQuestion = questions[currentQuestionIndex - 1].id;
 
-            if(previousQuestion){
+            if (previousQuestion) {
 
-                if($(questionBodyContainer).find('input:checked').val()){
+                if ($(questionBodyContainer).find('input:checked').val()) {
                     answers.push({
-                        featureType : previousQuestion,
-                        answer : $(questionBodyContainer).find('input:checked').val()
+                        featureType: previousQuestion,
+                        answer: $(questionBodyContainer).find('input:checked').val()
                     });
                 }
 
@@ -59,11 +59,11 @@ jQuery(function($){
         });
     }
 
-    function submitOrShow(action){
-        if($(questionBodyContainer).find('input:checked').val()){
+    function submitOrShow(action) {
+        if ($(questionBodyContainer).find('input:checked').val()) {
             $('#alert-msg').hide();
 
-            if(questions.length !== currentQuestionIndex){
+            if (questions.length !== currentQuestionIndex) {
                 showNextQuestion();
             }
             else {
@@ -78,7 +78,7 @@ jQuery(function($){
             }
 
         }
-        else if(action === 'no-answer') {
+        else if (action === 'no-answer') {
             $('#alert-msg').hide();
             showNextQuestion();
         }
@@ -87,14 +87,14 @@ jQuery(function($){
         }
     }
 
-    function showResults(result){
+    function showResults(result) {
 
-        $(questionTitleContainer).text('Best choices for you:');
+        $(questionTitleContainer).text('Top 10 for you:');
         $(questionBodyContainer).empty();
         $(totalProgress).empty();
 
 
-        result.map(function(item){
+        result.map(function (item) {
 
             console.log(item.car);
 
@@ -114,8 +114,8 @@ jQuery(function($){
                     )
                 ),
                 $('<div>', { class: 'progress' }).append(
-                    $('<div>', { class: 'progress-bar', role: 'progressbar'}).animate({width: item.rank * 100 + '%'}).append(
-                        $('<span>', { text: item.rank * 100 + '%'})
+                    $('<div>', { class: 'progress-bar', role: 'progressbar'}).animate({width: item.rank + '%'}).append(
+                        $('<span>', { text: item.rank + '%'})
                     )
                 )
             );
@@ -123,25 +123,25 @@ jQuery(function($){
         });
     }
 
-    function showNextQuestion(){
+    function showNextQuestion() {
         var currentQuestion = questions[currentQuestionIndex];
 
-        if(questions.length - 1 === currentQuestionIndex) {
+        if (questions.length - 1 === currentQuestionIndex) {
             $(btnNext).find('a').text('Finish');
         }
 
         $(questionTitleContainer).text(currentQuestion.question);
 
-        if(currentQuestion.type){
+        if (currentQuestion.type) {
 
             var questionBody = $(questionBodyContainer).empty();
 
-            currentQuestion.answers.map(function(answer){
-               questionBody.append(
-                   $('<input>', { id: 'answer' + answerId, type: 'radio', name : 'question', value : answer}),
-                   $('<label>', { text: answer, for: 'answer' + answerId++ }),
-                   $('<br>')
-               );
+            currentQuestion.answers.map(function (answer) {
+                questionBody.append(
+                    $('<input>', { id: 'answer' + answerId, type: 'radio', name: 'question', value: answer}),
+                    $('<label>', { text: answer, for: 'answer' + answerId++ }),
+                    $('<br>')
+                );
             });
 
         }
@@ -149,7 +149,7 @@ jQuery(function($){
 
         currentQuestionIndex++;
 
-        $(totalProgress).find('.progress-bar').width(parseInt(currentQuestionIndex/questions.length * 100) + '%');
+        $(totalProgress).find('.progress-bar').width(parseInt(currentQuestionIndex / questions.length * 100) + '%');
         $(totalProgress).find('.progress-bar span').text(currentQuestionIndex + '/' + questions.length);
     }
 

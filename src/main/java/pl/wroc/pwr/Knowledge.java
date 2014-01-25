@@ -2,6 +2,7 @@ package pl.wroc.pwr;
 
 import org.springframework.stereotype.Component;
 import pl.wroc.pwr.car.Car;
+import pl.wroc.pwr.car.Feature;
 import pl.wroc.pwr.car.FeatureType;
 
 import java.util.*;
@@ -22,22 +23,20 @@ public class Knowledge {
     private static Map<FeatureType, Question> questions = new LinkedHashMap<>();
 
     static {
-        // public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Integer doors, Feature... features) {
-        // top 50 source : http://www.auto-motor-i-sport.pl/wiadomosci/top-50-ranking-najpopularniejsze-auta-w-Polsce,15807,1
         cars.addAll(Arrays.asList(
-                new Car("Toyota", "Auris", 68000d, 5.5, 200, 10.0, 136d, 160d, 1.6, 5, 354, getPhoto("auris.jpeg"), HATCHBACK, PETROL, RAIL_FRONT),
-                new Car("Skoda", "Octavia", 75000d, 5.0, 218, 8.5, 150d, 320d, 2.0, 5, 560, getPhoto("octavia.jpg"), LIFTBACK, DIESEL, RAIL_FRONT),
-                new Car("Volkswagen", "Golf", 64000d, 5.2, 212, 8.4, 140d, 250d, 1.4, 5, 380, getPhoto("golf.jpg"), HATCHBACK, PETROL, RAIL_FRONT),
-                new Car("Opel", "Astra GTC", 85000d, 7.2, 220, 8.3, 180d, 230d, 1.6, 3, 370, getPhoto("astra_gtc.jpg"), HATCHBACK, PETROL, RAIL_FRONT),
-                new Car("Volkswagen", "Passat", 95000d, 5.8, 215, 9.0, 170d, 230d, 2.0, 5, 565, getPhoto("passat.jpg"), SEDAN, DIESEL),
-                new Car("Mazda", "6", 105000d, 6.2, 216, 9.1, 165d, 210d, 2.0, 5, 500, getPhoto("mazda.jpeg"), SEDAN, PETROL, RAIL_FRONT),
-                new Car("Ford", "Mondeo", 86000d, 5.3, 220, 8.9, 163d, 340d, 2.0, 5, 460, getPhoto("mondeo.jpg"), SEDAN, DIESEL, RAIL_FRONT),
-                new Car("BMW", "3 Series", 128000d, 5.8, 235, 7.5, 184d, 380d, 2.0, 5, 480, getPhoto("bmw3.jpg"), SEDAN, DIESEL, RAIL_REAR),
-                new Car("Audi", "A4", 120000d, 5.8, 226, 8.7, 170d, 230d, 2.0, 5, 440, getPhoto("audia4.jpg"), SEDAN, DIESEL, RAIL_FRONT),
-                new Car("Toyota", "RAV4", 123000d, 6.8, 190, 9.6, 150d, 340d, 2.2, 5, 469, getPhoto("toyotarav4.jpg"), SUV, DIESEL, RAIL_4),
-                new Car("Nissan", "Qashqai", 75000d, 6.5, 199, 9.0, 150d, 240d, 1.6, 5, 410, getPhoto("nissan_qashqai.jpg"), SUV, PETROL, RAIL_FRONT),
-                new Car("Nissan", "370Z", 192000d, 10.6, 250, 5.2, 344d, 371d, 3.7, 2, 235, getPhoto("nissan-370z.jpg"), COUPE, PETROL, RAIL_REAR),
-                new Car("Mazda", "MX-5", 115000d, 7.8, 218, 7.9, 160d, 188d, 2.0, 2, 144, getPhoto("mazda-mx5.jpg"), ROADSTER, PETROL, RAIL_REAR)
+                new Car("Toyota", "Auris", 68000d, 5.5, 200, 10.0, 136d, 160d, 1.6, 5, 354, getPhoto("auris.jpeg"), HATCHBACK, PETROL, GAS, RAIL_FRONT, CITY, FAMILY, MANUAL),
+                new Car("Skoda", "Octavia", 75000d, 5.0, 218, 8.5, 150d, 320d, 2.0, 5, 560, getPhoto("octavia.jpg"), LIFTBACK, DIESEL, RAIL_FRONT, FAMILY, CITY, MANUAL, Feature.TURBO),
+                new Car("Volkswagen", "Golf", 64000d, 5.2, 212, 8.4, 140d, 250d, 1.4, 5, 380, getPhoto("golf.jpg"), HATCHBACK, PETROL, GAS, RAIL_FRONT, FAMILY, CITY, MANUAL),
+                new Car("Opel", "Astra GTC", 85000d, 7.2, 220, 8.3, 180d, 230d, 1.6, 3, 370, getPhoto("astra_gtc.jpg"), HATCHBACK, PETROL, RAIL_FRONT, SPORT, MANUAL, Feature.TURBO),
+                new Car("Volkswagen", "Passat", 95000d, 5.8, 215, 9.0, 170d, 230d, 2.0, 5, 565, getPhoto("passat.jpg"), SEDAN, DIESEL, FAMILY, CITY, MANUAL, AUTOMAT, Feature.TURBO),
+                new Car("Mazda", "6", 105000d, 6.2, 216, 9.1, 165d, 210d, 2.0, 5, 500, getPhoto("mazda.jpeg"), SEDAN, PETROL, RAIL_FRONT, FAMILY, SPORT, BUSINESS, MANUAL, AUTOMAT),
+                new Car("Ford", "Mondeo", 86000d, 5.3, 220, 8.9, 163d, 340d, 2.0, 5, 460, getPhoto("mondeo.jpg"), SEDAN, DIESEL, RAIL_FRONT, FAMILY, CITY, MANUAL, AUTOMAT, Feature.TURBO),
+                new Car("BMW", "3 Series", 128000d, 5.8, 235, 7.5, 184d, 380d, 2.0, 5, 480, getPhoto("bmw3.jpg"), SEDAN, DIESEL, RAIL_REAR, SPORT, BUSINESS, MANUAL, AUTOMAT, Feature.TURBO),
+                new Car("Audi", "A4", 120000d, 5.8, 226, 8.7, 170d, 230d, 2.0, 5, 440, getPhoto("audia4.jpg"), SEDAN, DIESEL, RAIL_FRONT, FAMILY, CITY, MANUAL, AUTOMAT, Feature.TURBO),
+                new Car("Toyota", "RAV4", 123000d, 6.8, 190, 9.6, 150d, 340d, 2.2, 5, 469, getPhoto("toyotarav4.jpg"), SUV, DIESEL, RAIL_4, TERRAIN, FAMILY, CITY, AUTOMAT, MANUAL, Feature.TURBO),
+                new Car("Nissan", "Qashqai", 75000d, 6.5, 199, 9.0, 150d, 240d, 1.6, 5, 410, getPhoto("nissan_qashqai.jpg"), SUV, PETROL, RAIL_FRONT, FAMILY, CITY, TERRAIN, MANUAL, AUTOMAT),
+                new Car("Nissan", "370Z", 192000d, 10.6, 250, 5.2, 344d, 371d, 3.7, 2, 235, getPhoto("nissan-370z.jpg"), COUPE, PETROL, RAIL_REAR, SPORT, MANUAL, AUTOMAT, Feature.TURBO),
+                new Car("Mazda", "MX-5", 115000d, 7.8, 218, 7.9, 160d, 188d, 2.0, 2, 144, getPhoto("mazda-mx5.jpg"), ROADSTER, PETROL, RAIL_REAR, SPORT, CITY, MANUAL, AUTOMAT)
         ));
 
         questions.put(CAR_PURPOSE, new Question(CAR_PURPOSE, Type.MULTIANSWER, "What is purpose of the car?", CITY.toString(), SPORT.toString(), TERRAIN.toString(), BUSINESS.toString(), FAMILY.toString()));

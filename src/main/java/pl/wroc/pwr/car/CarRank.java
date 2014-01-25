@@ -6,11 +6,11 @@ package pl.wroc.pwr.car;
 public class CarRank{
 
     private Car car;
-    private Double rank;
+    private Integer rank;
 
     public CarRank(Car car, Double rank) {
         this.car = car;
-        this.rank = rank;
+        this.rank = rank.intValue();
     }
 
     public Car getCar() {
@@ -21,11 +21,11 @@ public class CarRank{
         this.car = car;
     }
 
-    public Double getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(Double rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 }
