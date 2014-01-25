@@ -13,7 +13,8 @@ jQuery(function($){
         answers = [],
         questionTitleContainer = '#question-title',
         questionBodyContainer = '#question-body',
-        btnNext = '#btn-next-question';
+        btnNext = '#btn-next-question',
+        totalProgress = '#total-progress';
 
     function onStartSurveyClick(button, intro, question, ajaxUrl){
         $(button).click(function(){
@@ -90,6 +91,7 @@ jQuery(function($){
 
         $(questionTitleContainer).text('Best choices for you:');
         $(questionBodyContainer).empty();
+        $(totalProgress).empty();
 
 
         result.map(function(item){
@@ -144,7 +146,11 @@ jQuery(function($){
 
         }
 
+
         currentQuestionIndex++;
+
+        $(totalProgress).find('.progress-bar').width(parseInt(currentQuestionIndex/questions.length * 100) + '%');
+        $(totalProgress).find('.progress-bar span').text(currentQuestionIndex + '/' + questions.length);
     }
 
 });

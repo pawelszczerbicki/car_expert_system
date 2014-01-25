@@ -37,6 +37,13 @@
             <div id="question-body"></div>
             <p id="btn-no-answer" class="text-left pull-left"><a class="btn btn-default" href="#" role="button">No answer</a></p>
             <p id="btn-next-question" class="text-right"><a class="btn btn-primary" href="#" role="button">Next question</a></p>
+            <br>
+            <div id="total-progress" class="progress" role="progress">
+                <div class="progress-bar">
+                    <span>0 %</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
