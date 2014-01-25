@@ -40,7 +40,7 @@ public class Index {
     @RequestMapping(value = "answers", method = RequestMethod.POST)
     @ResponseBody
     public JsonResponse answer(@RequestBody Answer[] answers) {
-        return SuccessResponse.create(expert.resolve(Arrays.asList(answers)));
+        return SuccessResponse.create(expert.resolve(Arrays.asList(answers)).subList(0,10));
     }
 
     @RequestMapping(value = "answers-test", method = RequestMethod.GET)

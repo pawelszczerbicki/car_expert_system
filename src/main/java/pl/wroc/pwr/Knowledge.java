@@ -9,8 +9,6 @@ import java.util.*;
 
 import static pl.wroc.pwr.car.Feature.*;
 import static pl.wroc.pwr.car.FeatureType.*;
-import static pl.wroc.pwr.car.FeatureType.HORSE_POWER;
-import static pl.wroc.pwr.car.FeatureType.MOMENT;
 
 /**
  * Created by Pawel on 04.01.14.
@@ -36,24 +34,29 @@ public class Knowledge {
                 new Car("Toyota", "RAV4", 123000d, 6.8, 190, 9.6, 150d, 340d, 2.2, 5, 469, getPhoto("toyotarav4.jpg"), SUV, DIESEL, RAIL_4, TERRAIN, FAMILY, CITY, AUTOMAT, MANUAL, Feature.TURBO),
                 new Car("Nissan", "Qashqai", 75000d, 6.5, 199, 9.0, 150d, 240d, 1.6, 5, 410, getPhoto("nissan_qashqai.jpg"), SUV, PETROL, RAIL_FRONT, FAMILY, CITY, TERRAIN, MANUAL, AUTOMAT),
                 new Car("Nissan", "370Z", 192000d, 10.6, 250, 5.2, 344d, 371d, 3.7, 2, 235, getPhoto("nissan-370z.jpg"), COUPE, PETROL, RAIL_REAR, SPORT, MANUAL, AUTOMAT, Feature.TURBO),
-                new Car("Mazda", "MX-5", 115000d, 7.8, 218, 7.9, 160d, 188d, 2.0, 2, 144, getPhoto("mazda-mx5.jpg"), ROADSTER, PETROL, RAIL_REAR, SPORT, CITY, MANUAL, AUTOMAT)
+                new Car("Mazda", "MX-5", 115000d, 7.8, 218, 7.9, 160d, 188d, 2.0, 2, 144, getPhoto("mazda-mx5.jpg"), ROADSTER, PETROL, RAIL_REAR, SPORT, CITY, MANUAL, AUTOMAT),
+                new Car("Peugeot", "208", 50000d, 5.1, 175, 12.2, 68d, 95d, 1.2, 5, 311, getPhoto("peugeot208.jpeg"), PETROL, HATCHBACK, RAIL_FRONT, FAMILY, CITY, MANUAL),
+                new Car("Lamborgini", "Gallardo", 600000d, 17d, 320, 3.4, 550d, 540d, 5.2, 2, 100, getPhoto("lamborginigallardo.jpg"), PETROL, COUPE, RAIL_REAR, SPORT, AUTOMAT, Feature.TURBO),
+                new Car("Porshe", "Cayenne", 500000d, 11d, 283, 4.5, 550d, 750d, 4.8, 5, 670, getPhoto("cayenne.jpg"), PETROL, SUV, RAIL_4, RAIL_FRONT, RAIL_REAR, SPORT, BUSINESS, AUTOMAT, Feature.TURBO),
+                new Car("Jaguar", "XF", 140000d, 8.5, 250, 6.4, 275d, 600d, 2.9, 5, 550, getPhoto("jaguar.jpg"), DIESEL, PETROL, LIMOUSINE, RAIL_REAR, SPORT, BUSINESS, AUTOMAT, MANUAL, Feature.TURBO),
+                new Car("Ferrari", "458 Italia", 950000d, 14.5, 325, 3.4, 570d, 540d, 4.5, 2, 230, getPhoto("ferrari458.jpg"), PETROL, COUPE, RAIL_REAR, SPORT, AUTOMAT, Feature.TURBO)
         ));
 
         questions.put(CAR_PURPOSE, new Question(CAR_PURPOSE, Type.MULTIANSWER, "What is purpose of the car?", CITY.toString(), SPORT.toString(), TERRAIN.toString(), BUSINESS.toString(), FAMILY.toString()));
-        questions.put(FeatureType.PRICE, new Question(FeatureType.PRICE, Type.MULTIANSWER, "What price ? [PLN]", "30000-60000", "61000-90000", "91000-120000", "121000-150000", "151000-500000"));
+        questions.put(FeatureType.PRICE, new Question(FeatureType.PRICE, Type.MULTIANSWER, "What price ? [PLN]", "30000-60000", "61000-90000", "91000-120000", "121000-150000", "151000-300000", "300000-600000", "600000-1000000"));
         questions.put(FUEL, new Question(FUEL, Type.MULTIANSWER, "What fuel type?", GAS.toString(), PETROL.toString(), DIESEL.toString()));
         questions.put(CAR_TYPE, new Question(CAR_TYPE, Type.MULTIANSWER, "What kind of car do you want?", SEDAN.toString(), CABRIO.toString(), COMBI.toString(), COUPE.toString(), VAN.toString(), LIMOUSINE.toString(), HATCHBACK.toString(), SUV.toString(), LIFTBACK.toString(), ROADSTER.toString()));
-        questions.put(TRUNK, new Question(TRUNK, Type.MULTIANSWER, "What trunk capacity do zou want? [L]", "120-250", "250-350", "350-400", "400-500", "500-700"));
+        questions.put(TRUNK, new Question(TRUNK, Type.MULTIANSWER, "What trunk capacity do zou want? [L]", "100-250", "250-350", "350-400", "400-500", "500-700"));
         questions.put(DOORS, new Question(DOORS, Type.MULTIANSWER, "How many doors do you want", "2", "5"));
         questions.put(GEAR_BOX, new Question(GEAR_BOX, Type.MULTIANSWER, "What type of gearbox do you want", MANUAL.toString(), AUTOMAT.toString()));
         questions.put(RAIL_TYPE, new Question(RAIL_TYPE, Type.MULTIANSWER, "What kind of rail?", RAIL_4.toString(), RAIL_FRONT.toString(), RAIL_REAR.toString()));
-        questions.put(FeatureType.ENGINE_CAPACITY, new Question(FeatureType.ENGINE_CAPACITY, Type.MULTIANSWER, "What is engine size", "1.0-1.5", "1.6-1.9", "2.0-2.5", "2.5-5.0"));
+        questions.put(ENGINE_CAPACITY, new Question(ENGINE_CAPACITY, Type.MULTIANSWER, "What is engine size", "1.0-1.5", "1.6-1.9", "2.0-2.5", "2.5-3.5", "3.5-6"));
         questions.put(FeatureType.TURBO, new Question(FeatureType.TURBO, Type.MULTIANSWER, "Do you want turbo?", "Yes", "No"));
-        questions.put(FeatureType.FUEL_CONSUMPTION, new Question(FeatureType.FUEL_CONSUMPTION, Type.MULTIANSWER, "What fuel consumption do you accept? [L]", "0-5.5", "5.6-8.5", "8.6-12", "12-15", "15-25"));
-        questions.put(FeatureType.MAX_SPEED, new Question(FeatureType.MAX_SPEED, Type.MULTIANSWER, "What is max speed that you wand to? [km/h]", "100-170", "180-220", "220-250", "250-320"));
-        questions.put(FeatureType.ACCELERATION, new Question(FeatureType.ACCELERATION, Type.MULTIANSWER, "What acceleration do you want to 100 km/h? [s]", "15-10", "10-7", "7-5", "5-2"));
-        questions.put(HORSE_POWER, new Question(HORSE_POWER, Type.MULTIANSWER, "What horse power do you want?", "50-80", "80-120", "120-160", "160-190", "190-220", "220-260", "260-350"));
-        questions.put(MOMENT, new Question(MOMENT, Type.MULTIANSWER, "What moment do you want? [Nm]", "100-150", "150-170", "170-200", "200-220", "220-250", "250-300", "300-350", "350-400"));
+        questions.put(FUEL_CONSUMPTION, new Question(FUEL_CONSUMPTION, Type.MULTIANSWER, "What fuel consumption do you accept? [L]", "0-5.5", "5.6-8.5", "8.6-12", "12-15", "15-25"));
+        questions.put(MAX_SPEED, new Question(MAX_SPEED, Type.MULTIANSWER, "What is max speed that you wand to? [km/h]", "100-170", "180-220", "220-250", "250-350"));
+        questions.put(ACCELERATION, new Question(ACCELERATION, Type.MULTIANSWER, "What acceleration do you want to 100 km/h? [s]", "15-10", "10-7", "7-5", "5-2"));
+        questions.put(HORSE_POWER, new Question(HORSE_POWER, Type.MULTIANSWER, "What horse power do you want?", "50-80", "80-120", "120-160", "160-190", "190-220", "220-260", "260-350", "350-600"));
+        questions.put(MOMENT, new Question(MOMENT, Type.MULTIANSWER, "What moment do you want? [Nm]", "100-150", "150-170", "170-200", "200-220", "220-250", "250-300", "300-350", "350-400", "400-600", "600-1000"));
 
     }
 
