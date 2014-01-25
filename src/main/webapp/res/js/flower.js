@@ -99,7 +99,7 @@ jQuery(function($){
             console.log(item.car);
 
             $(questionBodyContainer).append(
-                $('<h3>', { text: item.car.model }),
+                $('<h3>', { text: item.car.make + ' ' + item.car.model }),
                 $('<div>', { class: 'row'}).append(
                     $('<div>', { class: 'col-md-4'}).append(
                         $('<a>', { class: 'thumbnail'}).append(
