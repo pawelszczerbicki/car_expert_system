@@ -56,7 +56,7 @@ public class Expert {
                 if (car.getDoors().equals(Integer.parseInt(answer))) rank++;
                 break;
             case ENGINE_CAPACITY:
-                if (car.getCapacity().equals(Double.parseDouble(answer))) rank++;
+                //if (car.getCapacity().equals(Double.parseDouble(answer))) rank++;
                 break;
             case FUEL_CONSUMPTION:
                 if (car.getFuelConsumption() <= Double.parseDouble(answer)) rank++;
@@ -70,7 +70,7 @@ public class Expert {
             case MOMENT:
                 if (car.getMoment() >= Double.parseDouble(answer)) rank++;
                 break;
-            case PETROL_TYPE:
+            case FUEL:
                 if (car.hasFeature(Feature.valueOf(answer))) rank++;
                 break;
             case RAIL_TYPE:

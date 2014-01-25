@@ -19,10 +19,11 @@ public class Car {
     private Double moment;
     private Double capacity;
     private Integer doors;
-    private String photo = "/resources/img/mazda.jpeg";
+    private String photo;
+    private Integer trunk;
     private List<Feature> features = new ArrayList<>();
 
-    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Integer doors, Feature... features) {
+    public Car(String make, String model, Double price, Double fuelConsumption, Integer maxSpeed, Double acceleration, Double horsePower, Double moment, Double capacity, Integer doors, Integer trunk, String photo, Feature... features) {
         this.make = make;
         this.model = model;
         this.price = price;
@@ -33,6 +34,8 @@ public class Car {
         this.moment = moment;
         this.capacity = capacity;
         this.doors = doors;
+        this.trunk = trunk;
+        this.photo = photo;
         this.features.addAll(Arrays.asList(features));
     }
 
