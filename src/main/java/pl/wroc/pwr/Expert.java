@@ -38,7 +38,7 @@ public class Expert {
 
     private List<CarRank> getCarRank(Map<Car, Integer> rank) {
         List<CarRank> carRanks = new ArrayList<>();
-        for (Entry<Car, Integer> e : rank.entrySet()){
+        for (Entry<Car, Integer> e : rank.entrySet()) {
             CarRank carrrank = new CarRank(e.getKey(), ((double) e.getValue() * 100) / answeredQuestions);
             carrrank.setPluses(pluses.get(e.getKey()));
             carrrank.setMinuses(minuses.get(e.getKey()));
@@ -190,9 +190,6 @@ public class Expert {
                 } else carMinuses.add(mop);
                 break;
         }
-        if(pluses.get(car) == null) pluses.put(car, new ArrayList<String>());
-        if(minuses.get(car) == null) minuses.put(car, new ArrayList<String>());
-
         List<String> newPluses = new ArrayList<>();
         newPluses.addAll(pluses.get(car));
         newPluses.addAll(carPluses);
@@ -209,6 +206,8 @@ public class Expert {
         Map<Car, Integer> rank = new HashMap<>();
         for (Car c : knowledge.getCars()) {
             rank.put(c, 0);
+            pluses.put(c, new ArrayList<String>());
+            minuses.put(c, new ArrayList<String>());
         }
         return rank;
     }
