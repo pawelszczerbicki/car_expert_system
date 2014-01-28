@@ -106,11 +106,11 @@ jQuery(function ($) {
                             $('<img>', { src: item.car.photo })
                         )
                     ),
-                    $('<div>', { class: 'col-md-4'}).append(
-                        $('<p>', { text: 'In plus'})
+                    $('<div>', { id: item.car.make.replace(' ', '') + '_' + item.car.model.replace(' ', '') + '_plus', class: 'col-md-4'}).append(
+                        '<p><b><u>In plus</u></b></p>'
                     ),
-                    $('<div>', { class: 'col-md-4'}).append(
-                        $('<p>', { text: 'In minus'})
+                    $('<div>', { id: item.car.make.replace(' ', '') + '_' + item.car.model.replace(' ', '') + '_minus', class: 'col-md-4'}).append(
+                        '<p><b><u>In minus</u></b></p>'
                     )
                 ),
                 $('<div>', { class: 'progress' }).append(
@@ -119,6 +119,20 @@ jQuery(function ($) {
                     )
                 )
             );
+
+            item.pluses.map(function(plus){
+               $('#' + item.car.make.replace(' ', '') + '_' + item.car.model.replace(' ', '') + '_plus').append(
+                   $('<p>', { text: plus })
+               )
+            });
+
+            item.minuses.map(function(minus){
+                $('#' + item.car.make.replace(' ', '') + '_' + item.car.model.replace(' ', '') + '_minus').append(
+                    $('<p>', { text: minus })
+                )
+            });
+
+            $(totalProgress).hide();
 
         });
     }
